@@ -168,9 +168,23 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None,
     return aggregate
 
 
+def trim_description_content(description_content):
+    # Remove empty lines
+
+    description_content_chunks = [
+        line.strip() for line in description_content.split('\n')
+        if len(line.strip()) > 0
+    ]
+
+    trimmed_description_content = '\n'.join(description_content_chunks)
+
+    return trimmed_description_content
+
+
 def concatenate_description_data(output_file_name=None,
                                  aggregate=None,
-                                 description_label=None):
+                                 description_label=None,
+                                 remove_empty_lines=True):
     print('Concatenating game descriptions into a TXT file')
 
     if output_file_name is None:
@@ -188,10 +202,15 @@ def concatenate_description_data(output_file_name=None,
     store_descriptions = []
 
     for app_id in sorted(aggregate.keys(), key=int):
-        current_description = aggregate[app_id][description_label]
+        description_content = aggregate[app_id][description_label]
 
-        if len(current_description) > 0:
-            store_descriptions.append(current_description)
+        if remove_empty_lines:
+            trimmed_description_content = trim_description_content(description_content)
+        else:
+            trimmed_description_content = description_content
+
+        if len(trimmed_description_content) > 0:
+            store_descriptions.append(trimmed_description_content)
 
     line_separator = '\n'
 
