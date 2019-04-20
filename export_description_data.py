@@ -167,7 +167,9 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=Tr
     return aggregate
 
 
-def concatenate_description_data(output_file_name=None, aggregate=None):
+def concatenate_description_data(output_file_name=None,
+                                 aggregate=None,
+                                 description_label=None):
     print('Concatenating game descriptions into a TXT file')
 
     if output_file_name is None:
@@ -179,10 +181,13 @@ def concatenate_description_data(output_file_name=None, aggregate=None):
         with open(input_filename, 'r', encoding='utf8') as f:
             aggregate = json.load(f)
 
+    if description_label is None:
+        description_label = 'description'
+
     store_descriptions = []
 
     for app_id in sorted(aggregate.keys(), key=int):
-        current_description = aggregate[app_id]['description']
+        current_description = aggregate[app_id][description_label]
 
         if len(current_description) > 0:
             store_descriptions.append(current_description)
