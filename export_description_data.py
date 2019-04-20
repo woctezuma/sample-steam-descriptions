@@ -191,11 +191,6 @@ def concatenate_description_data(output_file_name=None,
 
         if len(current_description) > 0:
             store_descriptions.append(current_description)
-        else:
-            current_description = aggregate[app_id]['header']
-
-            if len(current_description) > 0:
-                store_descriptions.append(current_description)
 
     line_separator = '\n'
 
