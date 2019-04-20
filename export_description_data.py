@@ -56,7 +56,8 @@ def get_txt_output_file_name():
     return output_text_file_name
 
 
-def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=True):
+def aggregate_game_descriptions_from_steam_data(output_filename=None,
+                                                verbose=True):
     # Code inspired from: https://github.com/woctezuma/steam-api/blob/master/aggregate_game_text_descriptions.py
 
     print('Aggregating game descriptions into a JSON file')
