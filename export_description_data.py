@@ -223,4 +223,4 @@ def concatenate_description_data(output_file_name=None,
 
 if __name__ == '__main__':
     aggregate_game_descriptions_from_steam_data()
-    concatenate_description_data()
+    concatenate_description_data(description_label='description')
