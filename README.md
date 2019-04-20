@@ -21,13 +21,13 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Download Steam descriptions
+### Download app details, which include Steam store descriptions
 
-```
-python download_description_data.py
-```
+Store descriptions are parsed from app details, which can be downloaded with `steam_spy.py` in my [`steam-api`](https://github.com/woctezuma/steam-api) Github repository.
 
-### Concatenate descriptions in a large text file
+A data snapshot is available in my [`steam-api-data`](https://github.com/woctezuma/steam-api-data) Github repository.
+
+### Concatenate Steam store descriptions in a large text file
 
 ```
 python export_description_data.py
