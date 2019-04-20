@@ -12,7 +12,7 @@ This repository contains Python code to sample Steam store descriptions, with th
 
 ## Requirements
 
--   Install the latest version of [Python 3.X](https://www.python.org/downloads/). For CNTK, you will need Python 3.6.
+-   Install the latest version of [Python 3.X](https://www.python.org/downloads/).
 -   Install the required packages:
 
 ```bash
@@ -35,7 +35,7 @@ python export_description_data.py
 
 ### Fine-tune a pre-trained GPT-2 model
 
-Run the [`gpt_2_for_descriptions.ipynb`](gpt_2_for_descriptions.ipynb) notebook on Google Colab, which relies on the [`gpt_2_simple`](https://github.com/minimaxir/gpt-2-simple) package.
+Run the [`gpt_2_for_descriptions.ipynb`](gpt_2_for_descriptions.ipynb) notebook on [Google Colab](https://colab.research.google.com/), which relies on the [`gpt_2_simple`](https://github.com/minimaxir/gpt-2-simple) package.
 
 ## Results
 
