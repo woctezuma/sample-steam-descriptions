@@ -8,7 +8,7 @@
 
 This repository contains Python code to sample Steam store descriptions, with the GPT-2 language model.
 
-![Generated description, using GPT-2](https://github.com/woctezuma/sample-steam-reviews/wiki/img/cover.png)
+![Generated description, using GPT-2](https://github.com/woctezuma/sample-steam-descriptions/wiki/img/cover.png)
 
 ## Requirements
 
