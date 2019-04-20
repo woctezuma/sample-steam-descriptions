@@ -67,4 +67,4 @@ TODO
 [codecov-image]: <https://codecov.io/gh/woctezuma/sample-steam-descriptions/branch/master/graph/badge.svg>
 
 [codacy]: <https://www.codacy.com/app/woctezuma/sample-steam-descriptions>
-[codacy-image]: <https://api.codacy.com/project/badge/Grade/TODO>
+[codacy-image]: <https://api.codacy.com/project/badge/Grade/4d9e2b7f7ed54542972038cf7a9e7e6c>
