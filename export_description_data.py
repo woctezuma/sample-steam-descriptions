@@ -197,6 +197,7 @@ def concatenate_description_data(output_file_name=None,
             aggregate = json.load(f)
 
     if description_label is None:
+        # The label can be: i) 'header', ii) 'description', iii) 'detailed_description'.
         description_label = 'description'
 
     store_descriptions = []
