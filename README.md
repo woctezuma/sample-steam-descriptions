@@ -54,7 +54,9 @@ TODO
 
 -   [OpenAI, a blog post about GPT-2, 2019](https://openai.com/blog/better-language-models/)
 -   [Max Woolf, API for GPT-2, 2019](https://github.com/minimaxir/gpt-2-simple)
--   My repository to sample reviews for Steam games: [`sample-steam-reviews`](https://github.com/woctezuma/sample-steam-reviews) and [`sample-steam-reviews-with-gpt-2`](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2)
+-   My repositories to sample reviews for Steam games:
+    - [`sample-steam-reviews`](https://github.com/woctezuma/sample-steam-reviews)
+    - [`sample-steam-reviews-with-gpt-2`](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2)
 
 [build]: <https://travis-ci.org/woctezuma/sample-steam-descriptions>
 [build-image]: <https://travis-ci.org/woctezuma/sample-steam-descriptions.svg?branch=master>
