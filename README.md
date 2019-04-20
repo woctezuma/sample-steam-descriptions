@@ -33,6 +33,8 @@ A data snapshot is available in my [`steam-api-data`](https://github.com/woctezu
 python export_description_data.py
 ```
 
+A data snapshot is available in [`data/`](data/).
+
 ### Fine-tune a pre-trained GPT-2 model
 
 Run the [`gpt_2_for_descriptions.ipynb`](gpt_2_for_descriptions.ipynb) notebook on [Google Colab](https://colab.research.google.com/), which relies on the [`gpt_2_simple`](https://github.com/minimaxir/gpt-2-simple) package.
