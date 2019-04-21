@@ -41,14 +41,11 @@ Run the [`gpt_2_for_descriptions.ipynb`](gpt_2_for_descriptions.ipynb) notebook 
 
 ## Results
 
-Seed:
-```
-```
+Results obtained after 5000 steps:
 
-Generated samples:
-```
-TODO
-```
+-   [Unconditional generation](https://github.com/woctezuma/sample-steam-descriptions/wiki/Unconditional_Generation)
+-   [Half-life 3](https://github.com/woctezuma/sample-steam-descriptions/wiki/Half_Life_3)
+-   [Spelunky 2](https://github.com/woctezuma/sample-steam-descriptions/wiki/Spelunky_2)
 
 ## References
 
