@@ -73,7 +73,7 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None,
     # Variable used for debugging
     app_id_errors = list()
 
-    # Label for the text below the banner on the store page. If empty, 'about_the_game' is used.
+    # Label for the text below the banner on the store page.
     game_header_label = 'short_description'
     # Label for the text in the section called 'About the game' on the store page
     game_description_label = 'about_the_game'
