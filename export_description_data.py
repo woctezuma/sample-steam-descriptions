@@ -50,8 +50,11 @@ def get_json_aggregate_file_name():
     return aggregate_file_name
 
 
-def get_txt_output_file_name():
-    output_text_file_name = get_data_folder() + 'concatenated_store_descriptions.txt'
+def get_txt_output_file_name(description_label=None):
+    if description_label is None:
+        description_label = 'description'
+
+    output_text_file_name = get_data_folder() + 'concatenated_store_' + description_label + 's.txt'
 
     return output_text_file_name
 
@@ -187,9 +190,6 @@ def concatenate_description_data(output_file_name=None,
                                  remove_empty_lines=True):
     print('Concatenating game descriptions into a TXT file')
 
-    if output_file_name is None:
-        output_file_name = get_txt_output_file_name()
-
     if aggregate is None:
         input_filename = get_json_aggregate_file_name()
 
@@ -199,6 +199,9 @@ def concatenate_description_data(output_file_name=None,
     if description_label is None:
         # The label can be: i) 'header', ii) 'description', iii) 'detailed_description'.
         description_label = 'description'
+
+    if output_file_name is None:
+        output_file_name = get_txt_output_file_name(description_label)
 
     store_descriptions = []
 
@@ -223,4 +226,6 @@ def concatenate_description_data(output_file_name=None,
 
 if __name__ == '__main__':
     aggregate_game_descriptions_from_steam_data()
+    concatenate_description_data(description_label='header')
     concatenate_description_data(description_label='description')
+    concatenate_description_data(description_label='detailed_description')
