@@ -51,6 +51,7 @@ Results obtained after 5000 steps:
 
 -   [OpenAI, a blog post about GPT-2, 2019](https://openai.com/blog/better-language-models/)
 -   [Max Woolf, API for GPT-2, 2019](https://github.com/minimaxir/gpt-2-simple)
+-   [GPT-2 Neural Network Poetry, 2019](https://www.gwern.net/GPT-2)
 -   My repositories to sample reviews for Steam games:
     - [`sample-steam-reviews`](https://github.com/woctezuma/sample-steam-reviews)
     - [`sample-steam-reviews-with-gpt-2`](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2)
