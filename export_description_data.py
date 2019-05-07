@@ -171,15 +171,23 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None,
     return aggregate
 
 
+def get_line_separator():
+    line_separator = '\n'
+
+    return line_separator
+
+
 def trim_description_content(description_content):
     # Remove empty lines
 
+    line_separator = get_line_separator()
+
     description_content_chunks = [
-        line.strip() for line in description_content.split('\n')
+        line.strip() for line in description_content.split(line_separator)
         if len(line.strip()) > 0
     ]
 
-    trimmed_description_content = '\n'.join(description_content_chunks)
+    trimmed_description_content = line_separator.join(description_content_chunks)
 
     return trimmed_description_content
 
