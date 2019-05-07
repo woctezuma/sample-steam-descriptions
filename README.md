@@ -41,11 +41,17 @@ Run the [`gpt_2_for_descriptions.ipynb`](gpt_2_for_descriptions.ipynb) notebook 
 
 ## Results
 
-Results obtained after 5000 steps:
+Results obtained after 5000 steps using the 117M model:
 
 -   [Unconditional generation](https://github.com/woctezuma/sample-steam-descriptions/wiki/Unconditional_Generation)
 -   [Half-life 3](https://github.com/woctezuma/sample-steam-descriptions/wiki/Half_Life_3)
 -   [Spelunky 2](https://github.com/woctezuma/sample-steam-descriptions/wiki/Spelunky_2)
+
+Results obtained after 1000 steps using the 345M model:
+
+-   [Unconditional generation](https://github.com/woctezuma/sample-steam-descriptions/wiki/Unconditional_Generation_345M)
+-   [Half-life 3](https://github.com/woctezuma/sample-steam-descriptions/wiki/Half_Life_3_345M)
+-   [Spelunky 2](https://github.com/woctezuma/sample-steam-descriptions/wiki/Spelunky_2_345M)
 
 ## References
 
