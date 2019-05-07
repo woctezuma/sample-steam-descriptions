@@ -192,9 +192,22 @@ def trim_description_content(description_content):
     return trimmed_description_content
 
 
+def get_model_token_start():
+    model_token_start = '<|startoftext|>'
+
+    return model_token_start
+
+
+def get_model_token_end():
+    model_token_end = '<|endoftext|>'
+
+    return model_token_end
+
+
 def concatenate_description_data(output_file_name=None,
                                  aggregate=None,
                                  description_label=None,
+                                 use_model_token_delimiters=True,
                                  remove_empty_lines=True):
     print('Concatenating game descriptions into a TXT file')
 
@@ -224,10 +237,18 @@ def concatenate_description_data(output_file_name=None,
         if len(trimmed_description_content) > 0:
             store_descriptions.append(trimmed_description_content)
 
-    line_separator = '\n'
+    if use_model_token_delimiters:
+        description_separator = get_model_token_end() + get_line_separator() + get_model_token_start()
+    else:
+        description_separator = get_line_separator()
+
+    concatenated_store_descriptions = description_separator.join(store_descriptions)
+
+    if use_model_token_delimiters:
+        concatenated_store_descriptions = get_model_token_start() + concatenated_store_descriptions + get_model_token_end()
 
     with open(output_file_name, 'w', encoding='utf8') as f:
-        print(line_separator.join(store_descriptions), file=f)
+        print(concatenated_store_descriptions, file=f)
 
     return
 
