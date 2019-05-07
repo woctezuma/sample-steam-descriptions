@@ -253,8 +253,16 @@ def concatenate_description_data(output_file_name=None,
     return
 
 
-if __name__ == '__main__':
+def main(use_model_token_delimiters=True):
     aggregate_game_descriptions_from_steam_data()
-    concatenate_description_data(description_label='header')
-    concatenate_description_data(description_label='description')
-    concatenate_description_data(description_label='detailed_description')
+    concatenate_description_data(description_label='header',
+                                 use_model_token_delimiters=use_model_token_delimiters)
+    concatenate_description_data(description_label='description',
+                                 use_model_token_delimiters=use_model_token_delimiters)
+    concatenate_description_data(description_label='detailed_description',
+                                 use_model_token_delimiters=use_model_token_delimiters)
+    return
+
+
+if __name__ == '__main__':
+    main()
