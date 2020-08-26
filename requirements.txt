@@ -1,2 +1,2 @@
 gpt_2_simple
-steamspypi==1.0.0
+steamspypi==1.0.1
