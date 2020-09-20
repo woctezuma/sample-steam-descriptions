@@ -38,6 +38,7 @@ A data snapshot is available in [`data/`](data/).
 ### Fine-tune a pre-trained GPT-2 model
 
 Run the [`gpt_2_for_descriptions.ipynb`][gpt_2_for_descriptions] notebook on [Google Colab](https://colab.research.google.com/), which relies on the [`gpt_2_simple`](https://github.com/minimaxir/gpt-2-simple) package.
+[![Open In Colab][colab-badge]][gpt_2_for_descriptions]
 
 ## Results
 
@@ -76,3 +77,5 @@ Results obtained after 1000 steps using the 345M model:
 [codacy-image]: <https://api.codacy.com/project/badge/Grade/4d9e2b7f7ed54542972038cf7a9e7e6c>
 
 [gpt_2_for_descriptions]: <https://colab.research.google.com/github/woctezuma/sample-steam-descriptions/blob/master/gpt_2_for_descriptions.ipynb>
+
+[colab-badge]: <https://colab.research.google.com/assets/colab-badge.svg>
