@@ -25,7 +25,7 @@ def get_app_details_file_name(app_id):
 
 
 def load_app_details(app_id):
-    with open(get_app_details_file_name(app_id), 'r', encoding='utf8') as f:
+    with open(get_app_details_file_name(app_id), encoding='utf8') as f:
         app_details = json.load(f)
 
     return app_details
@@ -33,7 +33,7 @@ def load_app_details(app_id):
 
 def get_steamspy_catalog():
     steamspy_data = steamspypi.load()
-    steamspy_catalog = set(int(app_id) for app_id in steamspy_data.keys())
+    steamspy_catalog = {int(app_id) for app_id in steamspy_data}
 
     return steamspy_catalog
 
@@ -69,10 +69,10 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=Tr
     if output_filename is None:
         output_filename = get_json_aggregate_file_name()
 
-    aggregate = dict()
+    aggregate = {}
 
     # Variable used for debugging
-    app_id_errors = list()
+    app_id_errors = []
 
     # Label for the text below the banner on the store page.
     game_header_label = 'short_description'
@@ -89,7 +89,7 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=Tr
             app_details = load_app_details(app_id)
         except FileNotFoundError:
             if verbose:
-                print('App details not found for appID = {}'.format(app_id))
+                print(f'App details not found for appID = {app_id}')
                 app_id_errors.append(app_id)
             continue
 
@@ -97,12 +97,12 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=Tr
             app_name = app_details['name']
         except KeyError:
             if verbose:
-                print('Name not found for appID = {}'.format(app_id))
+                print(f'Name not found for appID = {app_id}')
                 app_id_errors.append(app_id)
             continue
         except TypeError:
             if verbose:
-                print('File empty for appID = {}'.format(app_id))
+                print(f'File empty for appID = {app_id}')
                 app_id_errors.append(app_id)
             continue
 
@@ -110,7 +110,7 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=Tr
             app_type = app_details['type']
         except KeyError:
             if verbose:
-                print('Missing type for appID = {} ({})'.format(app_id, app_name))
+                print(f'Missing type for appID = {app_id} ({app_name})')
                 app_id_errors.append(app_id)
             continue
 
@@ -134,14 +134,13 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=Tr
                 app_description = app_details[game_description_label]
                 app_detailed_description = app_details[game_detailed_description_label]
 
-                if verbose:
-                    if app_description != app_detailed_description:
-                        print(
-                            'Descriptions differ for appID = {} ({})'.format(
-                                app_id,
-                                app_name,
-                            ),
-                        )
+                if verbose and app_description != app_detailed_description:
+                    print(
+                        'Descriptions differ for appID = {} ({})'.format(
+                            app_id,
+                            app_name,
+                        ),
+                    )
 
                 app_text = (
                     app_header + ' ' + app_description + ' ' + app_detailed_description
@@ -176,7 +175,7 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=Tr
                     app_categories = []
 
                 if len(app_text) > 0:
-                    aggregate[app_id] = dict()
+                    aggregate[app_id] = {}
                     aggregate[app_id]['name'] = app_name
                     aggregate[app_id]['header'] = app_header
                     aggregate[app_id]['description'] = app_description
@@ -251,7 +250,7 @@ def concatenate_description_data(
     if aggregate is None:
         input_filename = get_json_aggregate_file_name()
 
-        with open(input_filename, 'r', encoding='utf8') as f:
+        with open(input_filename, encoding='utf8') as f:
             aggregate = json.load(f)
 
     if description_label is None:
