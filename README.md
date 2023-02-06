@@ -61,8 +61,8 @@ Results obtained after 1000 steps using the 345M model:
     - [`sample-steam-reviews`](https://github.com/woctezuma/sample-steam-reviews)
     - [`sample-steam-reviews-with-gpt-2`](https://github.com/woctezuma/sample-steam-reviews-with-gpt-2)
 
-[build]: <https://travis-ci.org/woctezuma/sample-steam-descriptions>
-[build-image]: <https://travis-ci.org/woctezuma/sample-steam-descriptions.svg?branch=master>
+[build]: <https://github.com/woctezuma/sample-steam-descriptions/actions>
+[build-image]: <https://github.com/woctezuma/sample-steam-descriptions/workflows/Python package/badge.svg?branch=master>
 
 [pyup]: <https://pyup.io/repos/github/woctezuma/sample-steam-descriptions/>
 [dependency-image]: <https://pyup.io/repos/github/woctezuma/sample-steam-descriptions/shield.svg>
