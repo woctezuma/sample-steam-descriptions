@@ -54,13 +54,14 @@ def get_txt_output_file_name(description_label=None):
     if description_label is None:
         description_label = 'description'
 
-    output_text_file_name = get_data_folder() + 'concatenated_store_' + description_label + 's.txt'
+    output_text_file_name = (
+        get_data_folder() + 'concatenated_store_' + description_label + 's.txt'
+    )
 
     return output_text_file_name
 
 
-def aggregate_game_descriptions_from_steam_data(output_filename=None,
-                                                verbose=True):
+def aggregate_game_descriptions_from_steam_data(output_filename=None, verbose=True):
     # Code inspired from: https://github.com/woctezuma/steam-api/blob/master/aggregate_game_text_descriptions.py
 
     print('Aggregating game descriptions into a JSON file')
@@ -118,34 +119,60 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None,
                 supported_languages = app_details['supported_languages']
             except KeyError:
                 if verbose:
-                    print('Missing information regarding language support for appID = {} ({})'.format(app_id, app_name))
+                    print(
+                        'Missing information regarding language support for appID = {} ({})'.format(
+                            app_id,
+                            app_name,
+                        ),
+                    )
                     app_id_errors.append(app_id)
                 continue
 
             parsed_supported_languages = re.split(r'\W+', supported_languages)
             if 'English' in parsed_supported_languages:
-
                 app_header = app_details[game_header_label]
                 app_description = app_details[game_description_label]
                 app_detailed_description = app_details[game_detailed_description_label]
 
                 if verbose:
                     if app_description != app_detailed_description:
-                        print('Descriptions differ for appID = {} ({})'.format(app_id, app_name))
+                        print(
+                            'Descriptions differ for appID = {} ({})'.format(
+                                app_id,
+                                app_name,
+                            ),
+                        )
 
-                app_text = app_header + ' ' + app_description + ' ' + app_detailed_description
+                app_text = (
+                    app_header + ' ' + app_description + ' ' + app_detailed_description
+                )
                 app_text = app_text.strip()
 
                 try:
-                    app_genres = [genre['description'] for genre in app_details['genres']]
+                    app_genres = [
+                        genre['description'] for genre in app_details['genres']
+                    ]
                 except KeyError:
-                    print('Missing genre description for appID = {} ({})'.format(app_id, app_name))
+                    print(
+                        'Missing genre description for appID = {} ({})'.format(
+                            app_id,
+                            app_name,
+                        ),
+                    )
                     app_genres = []
 
                 try:
-                    app_categories = [categorie['description'] for categorie in app_details['categories']]
+                    app_categories = [
+                        categorie['description']
+                        for categorie in app_details['categories']
+                    ]
                 except KeyError:
-                    print('Missing categorie description for appID = {} ({})'.format(app_id, app_name))
+                    print(
+                        'Missing categorie description for appID = {} ({})'.format(
+                            app_id,
+                            app_name,
+                        ),
+                    )
                     app_categories = []
 
                 if len(app_text) > 0:
@@ -158,11 +185,18 @@ def aggregate_game_descriptions_from_steam_data(output_filename=None,
                     aggregate[app_id]['categories'] = app_categories
             else:
                 if verbose:
-                    print('English not supported for appID = {} ({})'.format(app_id, app_name))
+                    print(
+                        'English not supported for appID = {} ({})'.format(
+                            app_id,
+                            app_name,
+                        ),
+                    )
                 continue
 
     if verbose:
-        print('\nList of appIDs which were associated with erroneous or incomplete JSON app details:\n')
+        print(
+            '\nList of appIDs which were associated with erroneous or incomplete JSON app details:\n',
+        )
         print(app_id_errors)
 
     with open(output_filename, 'w', encoding='utf8') as f:
@@ -183,7 +217,8 @@ def trim_description_content(description_content):
     line_separator = get_line_separator()
 
     description_content_chunks = [
-        line.strip() for line in description_content.split(line_separator)
+        line.strip()
+        for line in description_content.split(line_separator)
         if len(line.strip()) > 0
     ]
 
@@ -204,11 +239,13 @@ def get_model_token_end():
     return model_token_end
 
 
-def concatenate_description_data(output_file_name=None,
-                                 aggregate=None,
-                                 description_label=None,
-                                 use_model_token_delimiters=True,
-                                 remove_empty_lines=True):
+def concatenate_description_data(
+    output_file_name=None,
+    aggregate=None,
+    description_label=None,
+    use_model_token_delimiters=True,
+    remove_empty_lines=True,
+):
     print('Concatenating game descriptions into a TXT file')
 
     if aggregate is None:
@@ -238,14 +275,20 @@ def concatenate_description_data(output_file_name=None,
             store_descriptions.append(trimmed_description_content)
 
     if use_model_token_delimiters:
-        description_separator = get_model_token_end() + get_line_separator() + get_model_token_start()
+        description_separator = (
+            get_model_token_end() + get_line_separator() + get_model_token_start()
+        )
     else:
         description_separator = get_line_separator()
 
     concatenated_store_descriptions = description_separator.join(store_descriptions)
 
     if use_model_token_delimiters:
-        concatenated_store_descriptions = get_model_token_start() + concatenated_store_descriptions + get_model_token_end()
+        concatenated_store_descriptions = (
+            get_model_token_start()
+            + concatenated_store_descriptions
+            + get_model_token_end()
+        )
 
     with open(output_file_name, 'w', encoding='utf8') as f:
         print(concatenated_store_descriptions, file=f)
@@ -255,12 +298,18 @@ def concatenate_description_data(output_file_name=None,
 
 def main(use_model_token_delimiters=True):
     aggregate_game_descriptions_from_steam_data()
-    concatenate_description_data(description_label='header',
-                                 use_model_token_delimiters=use_model_token_delimiters)
-    concatenate_description_data(description_label='description',
-                                 use_model_token_delimiters=use_model_token_delimiters)
-    concatenate_description_data(description_label='detailed_description',
-                                 use_model_token_delimiters=use_model_token_delimiters)
+    concatenate_description_data(
+        description_label='header',
+        use_model_token_delimiters=use_model_token_delimiters,
+    )
+    concatenate_description_data(
+        description_label='description',
+        use_model_token_delimiters=use_model_token_delimiters,
+    )
+    concatenate_description_data(
+        description_label='detailed_description',
+        use_model_token_delimiters=use_model_token_delimiters,
+    )
     return
 
 
